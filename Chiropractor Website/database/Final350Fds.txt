@@ -1,0 +1,217 @@
+Assumptions:
+There will be only one doctor.
+There will only be one office manager.
+PNo will never get deleted from the patient's table.
+You can get any city and state with a zip code and address.
+You can get any group number and expiration date with an InsName and MemberID
+You will never be able to be in a room without an appointment.
+Two people will never have the same email and password.
+Two people will never have the same first name and date of birth.
+PNo is unique
+DNo is unique
+OmNo is unique
+A SOTAP, does not need a respective attribute on creation
+Every patient created will have default OTAP values.
+
+DNo -> DName, DDob, DAge, DGender, DAddrs, DZip, DPhone, DMail, DPassword, DCity, DState
+OmNo -> OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, OCity, OState
+PNo -> PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, DNo, PCity, PState
+PNo -> InsName, MemId
+InsName, MemId -> GrNo, ExpDate
+DAddrs, DZip -> DCity, DState
+OAddrs, OZip -> OCity, OState
+PAddrs, PZip -> PCity, PState
+
+PNo, AptDate -> DNo
+PNo, SNo -> S
+PNo, SNo, AptDate -> SAtt
+PNo, ONo -> O
+PNo, ONo, AptDate -> OAtt
+PNo, TNo -> T
+PNo, TNo, AptDate -> TAtt
+PNo, ANo -> A
+PNo, ANo, AptDate -> AAtt
+PNo, PlNo -> P
+PNo, PlNo, AptDate -> PlAtt
+
+PNo, AptDate -> NextApt, Time
+PNo, AptDate -> Notes
+PNo, AptDate -> Frequency
+
+R1:
+DNo, DName, DDob, DAge, DGender, DAddrs, DZip, DPhone, DMail, DPassword, DCity, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, OCity, OState
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, PCity, PState
+InsName, MemId, GrNo, ExpDate, AptDate, S, SNo, SAtt, O, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, NextApt, Time, Notes, Frequency
+
+R2 HT using InsName, MemId -> GrNo, ExpDate:
+InsName, MemID, GrNo, ExpDate
+R3:
+DNo, DName, DDob, DAge, DGender, DAddrs, DZip, DPhone, DMail, DPassword, DCity, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, OCity, OState
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, PCity, PState
+InsName, MemId, AptDate, S, SNo, SAtt, O, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, NextApt, Time, Notes, Frequency
+
+R4 HT using DAddrs, DZip -> DCity, DState & OAddrs, OZip -> OCity, OState & PAddrs, PZip -> PCity, PState:
+DAddrs, DZip, DCity, DState
+R5: 
+OAddrs, OZip, OCity, OState
+R6: 
+PAddrs, PZip, PCity, PState
+R7:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, S, SNo, SAtt, O, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, NextApt, Time, Notes, Frequency
+
+R8 HT using PNo, AptDate -> NextApt, Time:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, S, SNo, SAtt, O, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, Notes, Frequency
+R9:
+PNo, AptDate, NextApt, Time
+
+R10 HT using PNo, SNo -> S:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, SAtt, O, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, Notes, Frequency
+R11:
+PNo, SNo, S
+
+R12 HT using PNo, ONo -> O:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, SAtt, ONo, OAtt, T, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, Notes, Frequency
+R13:
+PNo, ONo, O
+
+R14 HT using PNo, TNo -> T:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, SAtt, ONo, OAtt, TNo, TAtt, 
+A, ANo, AAtt, P, PlNo, PlAtt, Notes, Frequency
+R15:
+PNo, TNo, T
+
+R16 HT using PNo, ANo -> A:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, S, SNo, SAtt, ONo, OAtt, TNo, TAtt, 
+ANo, AAtt, P, PlNo, PlAtt, Notes, Frequency
+R17: 
+PNo, ANo, A
+
+R18 HT using PNo, PlNo -> P:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, SAtt, ONo, OAtt, TNo, TAtt, 
+ANo, AAtt, PlNo, PlAtt, Notes, Frequency
+R19:
+PNo, PlNo, P
+
+R20: HT using PNo, SNo, AptDate -> SAtt:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, OAtt, TNo, TAtt, 
+ANo, AAtt, PlNo, PlAtt, Notes, Frequency
+R21:
+PNo, SNo, AptDate, SAtt
+
+R22: HT using PNo, ONo, AptDate -> OAtt:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, TNo, TAtt, 
+ANo, AAtt, PlNo, PlAtt, Notes, Frequency
+R23: 
+PNo, ONo, AptDate, OAtt
+
+R24: HT using PNo, TNo, AptDate -> TAtt:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, SAtt, ONo, TNo,
+ANo, AAtt, PlNo, PlAtt, Notes, Frequency
+R25: 
+PNo, TNo, AptDate, TAtt
+
+R26: HT using PNo, ANo, AptDate -> AAtt:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, TNo, 
+ANo, PlNo, PlAtt, Notes, Frequency
+R27: 
+PNo, ANo, AptDate, AAtt
+
+R28: HT using PNo, PlNo, AptDate -> PlAtt:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, TNo, 
+ANo, PlNo, Notes, Frequency
+R29:
+PNo, PlNo, AptDate, PlAtt
+
+R30: HT using PNo, AptDate -> Notes:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, TNo, 
+ANo, PlNo, Frequency
+R31: 
+PNo, AptDate, Notes
+
+R32: HT using PNo, AptDate -> Frequency:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+InsName, MemId, AptDate, SNo, ONo, TNo, 
+ANo, PlNo
+R33:
+PNo, AptDate, Frequency
+
+R34: HT using PNo -> InsName, MemId:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword, 
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+AptDate, SNo, ONo, TNo, ANo, PlNo
+R35: 
+PNo, InsName, MemId
+
+R36: HT using OmNo -> OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword:
+OmNo, OName, ODob, OAge, OGender, OAddrs, OZip, OPhone, OMail, OPassword:
+R37:
+DNo, DName, DDob, DAge, DGender, DAddrs, DPhone, DMail, DPassword, DState
+OmNo, PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+AptDate, SNo, ONo, TNo, ANo, PlNo
+
+R38: HT using DNo -> DName, DDob, DAge, DGender, DAddrs, DZip, DPhone, DMail, DPassword:
+DNo, DName, DDob, DAge, DGender, DAddrs, DZip, DPhone, DMail, DPassword
+R39:
+DNo, OmNo, PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+AptDate, SNo, ONo, TNo, ANo, PlNo
+
+R40: HT using PNo, AptDate -> DNo:
+PNo, AptDate, DNo
+R41:
+DNo, OmNo, PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword, 
+AptDate, SNo, ONo, TNo, ANo, PlNo
+
+R42: HT using PNo -> PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword:
+PNo, PName, PDob, PAge, PGender, PAddrs, PZip, PPhone, PMail, PPassword
+R43: 
+DNo, OmNo, PNo, AptDate, SNo, ONo, TNo, ANo, PlNo

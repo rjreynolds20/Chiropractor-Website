@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Overview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="header">
+        <a class="logo">
+            <img src="./images/logo.png" class="logoImage" alt="logo">
+        </a>
+        <p class="headerTitle" id="headerName">
+            Patient Sheet
+        </p>
+    </div>
+
+
+    <div class="form-popup" id="historyForm">
+        <form class="form-container">
+            <h1>History</h1>
+
+            <label for="sym"><b>History:</b></label>
+            <div class="historyElem" id="addHistory">
+
+            </div>
+            <button type="button" id="closeFormS" class="btn cancel"
+                onClick="closeForm('historyForm')">Close</button>
+        </form>
+    </div>
+
+
+    <div class="content" id="content">
+        <p class="infoTitle">Patient Sheet</p>
+        <button class="collapsible">Patient Information</button>
+        <div class="collapsibleContent">
+            <div class="info">
+                <div class="personal">
+                    <div class="infoGroup">
+                        <h4>Name:</h4>
+                        <p id="name"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Date of Birth:</h4>
+                        <p id="dob"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Age:</h4>
+                        <p id="age"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Gender:</h4>
+                        <p id="gender"></p>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div class="infoGroup">
+                        <h4>Address:</h4>
+                        <p id="address"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>City:</h4>
+                        <p id="city"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>State:</h4>
+                        <p id="state"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Zip:</h4>
+                        <p id="zip"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Phone Number:</h4>
+                        <p id="phone"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Email:</h4>
+                        <p id="email"></p>
+                    </div>
+                </div>
+
+                <div class="insurance">
+
+                    <div class="infoGroup">
+                        <h4>Insurance Name:</h4>
+                        <p id="insurancename"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Member ID:</h4>
+                        <p id="memberid"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Group Number:</h4>
+                        <p id="groupnumber"></p>
+                    </div>
+                    <div class="infoGroup">
+                        <h4>Expiration Date:</h4>
+                        <p id="expirationdate"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="collapsible">S</button>
+        <div class="collapsibleContent">
+            <div class="collapsibleBorder">
+                <div class="headerContainer">
+                    <div class="elem">
+                        <p style="font-weight:bold;">Symptom Name</p>
+                        <p style="font-weight:bold;">Description</p>
+                        <div class="indexStyle" id="symptom">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemContainer" id="obsContainer">
+                    <div class="buttonCenter">
+                        <p class="openBtn" onClick="openForm('sym')">Add</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="elemContainer" id="symptomContainer">
+                <div class="elem">
+                    <div class="addElem" id="symptomAddClick" style="cursor:pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">O</button>
+        <div class="collapsibleContent">
+            <div class="collapsibleBorder">
+                <div class="headerContainer">
+                    <div class="elem">
+                        <p style="font-weight:bold;">Observation</p>
+                        <p style="font-weight:bold;">Description</p>
+                        <div class="indexStyle" id="observation">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemContainer" id="obsContainer">
+                    <div class="buttonCenter">
+                        <p class="openBtn" onClick="openForm('obs')">Add</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="collapsible">T</button>
+        <div class="collapsibleContent">
+            <div class="collapsibleBorder">
+                <div class="headerContainer">
+                    <div class="elem">
+                        <p style="font-weight:bold;">Treatment</p>
+                        <p style="font-weight:bold;">Description</p>
+                        <div class="indexStyle" id="treatment">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemContainer" id="treatContainer">
+                    <div class="buttonCenter">
+                        <p class="openBtn" onClick="openForm('treat')">Add</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="collapsible">A</button>
+        <div class="collapsibleContent">
+            <div class="collapsibleBorder">
+                <div class="headerContainer">
+                    <div class="elem">
+                        <p style="font-weight:bold;">Assessment</p>
+                        <p style="font-weight:bold;">Description</p>
+                        <div class="indexStyle" id="assessment">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemContainer" id="assContainer">
+                    <div class="buttonCenter">
+                        <p class="openBtn" onClick="openForm('assess')">Add</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="collapsible">P</button>
+        <div class="collapsibleContent">
+            <div class="collapsibleBorder">
+                <div class="headerContainer">
+                    <div class="elem">
+                        <p style="font-weight:bold;">Plan</p>
+                        <p style="font-weight:bold;">Description</p>
+                        <div class="indexStyle" id="plan">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemContainer" id="planContainer">
+                    <div class="buttonCenter">
+                        <p class="openBtn" onClick="openForm('plan')">Add</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="collapsible">Notes</button>
+        <div class="collapsibleContent">
+            <div class="notesContainer">
+                <div class = "notesInformation">
+                    <h2 style="margin-top: 5px;" for="notes">Notes:</h2>
+                    <input type = "text" maxlength="80" size="60" id="notes" name="notes">
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" class="openBtn" style="margin-top: 30px; margin-bottom: 50px;" id="submitButton"
+            name="submitButton" value="Submit" onClick="submitSotap()">      
+    </div>
+
+
+    <!-- If you click on add entry, then click on another add entry, it will add to the new add entry. Ask Reece for clarification. -->
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <h1>Add New Entry</h1>
+
+            <label for="sym"><b>Enter Entry:</b></label>
+            <input type="text" placeholder="Entry Type (SOTAP)" id="left" required style="width: 85%;">
+
+            <label for="symAtt"><b>Description</b></label>
+            <input type="text" placeholder="Description" id="right" required style="width: 85%;">
+
+            <button type="button" class="btn" onClick="addDriver()">Add Entry</button>
+            <button type="button" id="closeFormS" class="btn cancel"
+                onClick="closeForm('myForm')">Close</button>
+        </form>
+    </div>
+
+
+ 
+
+
+    
+    <script src="script.js"></script>
+</body>
+
+</html>

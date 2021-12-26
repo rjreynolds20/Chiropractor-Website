@@ -1,0 +1,203 @@
+create table Doctors
+( DNo INT NOT NULL,
+DName VARCHAR(30) NOT NULL,
+Dob DATE NOT NULL,
+Age INT NOT NULL,
+Gender CHAR(1) NOT NULL,
+Addrs VARCHAR(40) NOT NULL,
+Zip CHAR(5) NOT NULL,
+Phone CHAR(10) NOT NULL,
+Mail VARCHAR(40) NOT NULL,
+Password VARCHAR(30) NOT NULL,
+PRIMARY KEY (DNo)
+);
+
+create table OManagers
+( ONo INT NOT NULL,
+OName VARCHAR(300) NOT NULL,
+Dob DATE NOT NULL,
+Age INT NOT NULL,
+Gender CHAR(1) NOT NULL,
+Addrs VARCHAR(40) NOT NULL,
+Zip CHAR(5) NOT NULL,
+Phone CHAR(10) NOT NULL,
+Mail VARCHAR(40) NOT NULL,
+Password VARCHAR(30) NOT NULL,
+PRIMARY KEY (ONo)
+);
+
+create table Patients
+( PNo INT NOT NULL,
+PName VARCHAR(30) NOT NULL,
+Dob DATE NOT NULL,
+Age INT NOT NULL,
+Gender CHAR(1) NOT NULL,
+Addrs VARCHAR(40) NOT NULL,
+Zip CHAR(5) NOT NULL,
+Phone CHAR(10) NOT NULL,
+Mail VARCHAR(40) NOT NULL,
+DNo INT NOT NULL,
+Password VARCHAR(30) NOT NULL,
+PRIMARY KEY (PNo),
+FOREIGN KEY (DNo) REFERENCES Doctors(DNo)
+);
+
+create table PatientInsurance
+(  PNo INT NOT NULL,
+InsName VARCHAR(30) NOT NULL,
+MemId VARCHAR(20) NOT NULL,
+CONSTRAINT U_Insurance UNIQUE (InsName,MemId),
+PRIMARY KEY (PNo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo) 
+);
+
+create table Insurance
+( InsName VARCHAR(30) NOT NULL,
+MemId VARCHAR(20) NOT NULL,
+GrNo VARCHAR(20) NOT NULL,
+ExpDate DATE NOT NULL,
+PRIMARY KEY (InsName, MemId),
+FOREIGN KEY (InsName, MemId) REFERENCES PatientInsurance (InsName, MemId)
+);
+
+create table FullAddress
+( Addrs VARCHAR(40) NOT NULL,
+Zip CHAR(5) NOT NULL,
+City VARCHAR(20) NOT NULL,
+St8 VARCHAR(15) NOT NULL,
+PRIMARY KEY (Addrs, Zip)
+);
+
+create table Visits
+( PNo INT NOT NULL,
+AptDate DATE NOT NULL,
+DNo INT NOT NULL,
+PRIMARY KEY (PNo, AptDate),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo),
+FOREIGN KEY (DNo) REFERENCES Doctors(DNo)
+);
+
+create table Symptoms
+( PNo INT NOT NULL,
+SNo INT NOT NULL,
+S VARCHAR(40) NOT NULL,
+PRIMARY KEY (PNo, SNo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table SymptomsDesc
+( PNo INT NOT NULL,
+SNo INT NOT NULL,
+AptDate DATE NOT NULL,
+SAtt VARCHAR(50) NOT NULL,
+PRIMARY KEY (PNo, SNo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits(PNo, AptDate)
+);
+
+create table Observations
+( PNo INT NOT NULL,
+ONo INT NOT NULL,
+O VARCHAR(40) NOT NULL,
+PRIMARY KEY (PNo, ONo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table ObservationDesc
+( PNo INT NOT NULL,
+ONo INT NOT NULL,
+AptDate DATE NOT NULL,
+OAtt VARCHAR(50) NOT NULL,
+PRIMARY KEY (PNo, ONo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits(PNo, AptDate)
+);
+
+create table Treatment
+( PNo INT NOT NULL,
+TNo INT NOT NULL,
+T VARCHAR(40) NOT NULL,
+PRIMARY KEY (PNo, TNo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table TreatmentDesc
+( PNo INT NOT NULL,
+TNo INT NOT NULL,
+AptDate DATE NOT NULL,
+TAtt VARCHAR(50) NOT NULL,
+PRIMARY KEY (PNo, TNo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits(PNo, AptDate)
+);
+
+create table Assessment
+( PNo INT NOT NULL,
+ANo INT NOT NULL,
+A VARCHAR(40) NOT NULL,
+PRIMARY KEY (PNo, ANo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table AssessmentDesc
+( PNo INT NOT NULL,
+ANo INT NOT NULL,
+AptDate DATE NOT NULL,
+AAtt VARCHAR(50) NOT NULL,
+PRIMARY KEY (PNo, ANo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits(PNo, AptDate)
+);
+
+create table Plan
+( PNo INT NOT NULL,
+PlNo INT NOT NULL,
+P VARCHAR(40) NOT NULL,
+PRIMARY KEY (PNo, PlNo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table PlanDesc
+( PNo INT NOT NULL,
+PlNo INT NOT NULL,
+AptDate DATE NOT NULL,
+PlAtt VARCHAR(50) NOT NULL,
+PRIMARY KEY (PNo, PlNo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits(PNo, AptDate)
+);
+
+create table NextAppointment
+( PNo INT NOT NULL,
+AptDate DATE NOT NULL,
+NextApt DATE NOT NULL,
+Time VARCHAR(30) NOT NULL,
+PRIMARY KEY (PNo, AptDate),
+FOREIGN KEY (PNo) REFERENCES Patients (PNo)
+);
+
+create table ApptNotes
+( PNo INT NOT NULL,
+AptDate DATE NOT NULL,
+Notes VARCHAR(80) NOT NULL,
+PRIMARY KEY (PNo, AptDate),
+FOREIGN KEY (PNo, AptDate) REFERENCES Visits (PNo, AptDate)
+);
+
+create table Frequency
+( PNo INT NOT NULL,
+AptDate DATE NOT NULL,
+Freq VARCHAR(10) NOT NULL,
+PRIMARY KEY (PNo, AptDate),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+create table ActivePatients
+(PNo INT NOT NULL,
+PRIMARY KEY (PNo),
+FOREIGN KEY (PNo) REFERENCES Patients (PNo)
+);
+
+create table Rooms
+( RNo INT NOT NULL,
+PNo INT NOT NULL,
+PRIMARY KEY (RNo),
+FOREIGN KEY (PNo) REFERENCES Patients(PNo)
+);
+
+

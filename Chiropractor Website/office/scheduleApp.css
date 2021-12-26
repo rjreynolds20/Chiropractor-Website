@@ -1,0 +1,110 @@
+body{
+    background-color:white;
+    font-family: Ultra;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background-color: rgb(14, 106, 211);
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+}
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header a:hover {
+    background-color: rgb(148, 148, 148);
+    color: black;
+}
+
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
+
+.inputs{
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    border: 5px solid #90CAF9;
+    line-height: 4px;
+}
+
+.time{
+    float: center;
+    text-align: center;
+    color: black;
+    line-height: 1.8;
+}
+
+.frequency{
+    float: center;
+    text-align: center;
+    color: black;
+    line-height: 1.8;
+}
+
+.dob{
+    float: center;
+    text-align: center;
+    color: black;
+    line-height: 1.8;
+}
+
+.fullName{
+    float: center;
+    text-align: center;
+    color: black;
+    line-height: 1.8;
+}
+
+.appDate{
+    float: center;
+    text-align: center;
+    color: black;
+    line-height: 1.8;
+}
+
+.button {
+    height: 40px;
+    width: 300px;
+    font-size: 25px;
+    word-spacing: 10px;
+    line-height: .8;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 2%;
+}
+
+.hidden {
+    display: none;
+}
+
+.logoImage {
+    font-size: 75px;
+    font-weight: bold;
+    padding: 5px;
+    width: 160px;
+}

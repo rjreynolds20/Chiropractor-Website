@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Office Manager</title>
+    <link href="officeManagerStyles.css" rel="stylesheet">
+    <script src=""></script>
+</head>
+
+<body>
+    <!-- Add the links to the designated webpages below. -->
+    <div class="header">
+        <a href="#default" class="logo">
+            <img src="./images/logo.png" class="logoImage" alt="logo">
+        </a>
+        <a href="../login/LogIn.html" style="float:right; color: white;">Logout</a>
+        <a class="active" href="removeClient.html" style="float:right; color: white;">Remove Client</a>
+        <a href="omregister.html" style="float:right; color: white;">Add Client</a>
+        <a href="assignRoom.html" style="float:right; color: white;">Assign Room</a>
+        <a href="scheduleApp.html" style="float:right; color: white;">Scheduling</a>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center; color: #2196F3">Remove Client:</h1>
+        <form action="removeClient.php" method="post">
+            <div class="informationContainer">
+                <div class = "information">
+                    <label for="fname">First Name: </label>
+                    <input type="text" id="fname" name="fname" size="15">
+                    <label for="lname">Last Name: </label>
+                    <input type="text" id="lname" name="lname" size="15">
+                    <label for="">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" min="1903-01-02">
+                </div>
+            </div>
+
+            <!-- Button will search for First/Last name in database, then will return response if not found/found. -->
+            <div class="informationContainer">
+                <input type="submit" class="button" id="removeButton" name="removeButton" value="Remove Client">  
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Office Manager</title>
+    <script src=""></script>
+    <link rel="stylesheet" href="RegisterStyles.css">
+  </head>
+  <div class="header">
+    <a href="#default" class="logo">
+        <img src="./images/logo.png" class="logoImage" alt="logo">
+    </a>
+    <a href="../login/LogIn.html" style="float:right; color: white;">Logout</a>
+    <a href="removeClient.html" style="float:right; color: white;">Remove Client</a>
+    <a class="active" href="omregister.html" style="float:right; color: white;">Add Client</a>
+    <a href="assignRoom.html" style="float:right; color: white;">Assign Room</a>
+    <a href="scheduleApp.html" style="float:right; color: white;">Scheduling</a>
+  </div>
+
+  <body>
+    <div class="container">
+      <h1 style="text-align: center; color: #2196F3">Register Client:</h1>
+      <form action="oaregistration.php" method="post">
+
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="M" checked required>
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="F" required>
+
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" maxlength="15" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" maxlength="15" required>
+
+            <label for="address">Street Address:</label>
+            <input type="text" id="address" name="address" maxlength="40" required>
+
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" maxlength="5" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" maxlength="20" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" maxlength="15" required>
+          </div>
+        </div>
+
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" min="1903-01-02" required>
+          </div>
+        </div>
+
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" maxlength="10" required
+            onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" maxlength="40" required>
+          </div>
+        </div>
+
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" max="118" required>
+          </div>
+        </div>
+
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="insname">Insurance Name:</label>
+            <input type="text" id="insname" name="insname" maxlength="30" required>
+
+            <label for="memID">Member ID:</label>
+            <input type="text" id="memID" name="memID" maxlength="20" required>
+    
+            <label for="text">Group Number:</label>
+            <input type="text" id="group" name="group" maxlength="20" required>
+    
+            <label for="expdate">Expiration Date:</label>
+            <input type="date" id="expdate" name="expdate" min="1903-01-02" required>
+          </div>
+        </div>
+        <div class="informationContainer">
+          <div class = "information">
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" minlength="6" maxlength="30" required>
+          </div>
+        </div>
+        <div class="informationContainer">
+          <input type="submit" class="button" value="Register Client">
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("dob").setAttribute("max", y + "-" + m + "-" + d)
+  </script>
+</html>

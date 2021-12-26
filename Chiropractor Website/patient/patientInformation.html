@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<!-- Linking to sylesheet and basic static page title -->
+
+<head>
+  <link rel="stylesheet" href="patientInformation.css">
+  <meta charset="UTF-8">
+  <title>Patient Information</title>
+</head>
+
+<!-- Construction of the header as well as the logo and header buttons -->
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <a href="#default">
+        <img src="./images/logo.png" class="logoImage" alt="logo">
+      </a>
+      <div class="header-right">
+        <a class="active" href="patientInformation.php">Home</a>
+        <a href="patientReschedule.html" style="color:white;">Scheduling</a>
+        <a href="../login/LogIn.html" style="float:right; color: white;">Logout</a>
+    </div>
+    </div>
+  </div>
+  <!-- Basic Patient display for Name, dob, age, gender -->
+  <div class="content" id="content">
+    <p class="infoTitle">Patient Information</p>
+    <form action="update.php" method="post">
+      <div class="info">
+        <div class="personal">
+          <div class="infoGroup">
+            <label for="name"> Name: </label><br>
+            <input type="text" id="name" name="name" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="dob"> Date of Birth: </label><br>
+            <input type="date" id="dob" name="dob" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="age"> Age: </label><br>
+            <input type="text" id="age" name="age" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="gender"> Gender: </label><br>
+            <input type="text" id="gender" name="gender" minlength="1" maxlength="1" required>
+          </div>
+        </div>
+        <!-- Basic editable patient display for Address, City, state, zip, phone, email -->
+        <div class="contact">
+          <div class="infoGroup">
+            <label for="address"> Address: </label><br>
+            <input type="text" id="address" name="address" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="city"> City: </label><br>
+            <input type="text" id="city" name="city" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="state"> State: </label><br>
+            <input type="text" id="state" name="state" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="zip"> Zip Code: </label><br>
+            <input type="text" id="zip" name="zip" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="phone"> Phone Number: </label><br>
+            <input type="text" id="phone" name="phone" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="email"> E-mail: </label><br>
+            <input type="text" id="email" name="email" minlength="1" required>
+          </div>
+        </div>
+        <!-- Basic patient display for Insurance Name, Member ID, GroupNumber, Experation Date-->
+        <div class="insurance">
+          <div class="infoGroup">
+            <label for="insurancename"> Insurance Name: </label><br>
+            <input type="text" id="insurancename" name="insurancename" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="memberid"> Member ID: </label><br>
+            <input type="text" id="memberid" name="memberid" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="groupnumber"> Group Number: </label><br>
+            <input type="text" id="groupnumber" name="groupnumber" minlength="1" required>
+          </div>
+          <div class="infoGroup">
+            <label for="expirationdate"> Experation Date: </label><br>
+            <input type="date" id="expirationdate" name="expirationdate" minlength="1" required>
+          </div>
+        </div>
+      </div>
+      <!-- submit button for data and linking to index.js file -->
+      <input type="submit" class="saveButton" id="saveButton" name="saveButton" value="Save Editions">
+    </form>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
